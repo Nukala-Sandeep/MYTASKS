@@ -1,0 +1,3 @@
+import jwt from 'jsonwebtoken';
+export function signUser(user){return jwt.sign({id:user._id.toString(),email:user.email},process.env.JWT_SECRET,{expiresIn:'7d'});}
+export function requireAuth(req,res,next){const h=req.headers.authorization||'',t=h.startsWith('Bearer ')?h.slice(7):null;if(!t)return res.status(401).json({message:'Authentication required'});try{req.user=jwt.verify(t,process.env.JWT_SECRET);next()}catch{res.status(401).json({message:'Invalid or expired token'})}}
