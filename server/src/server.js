@@ -9,6 +9,12 @@ import {requireAuth,signUser} from './auth.js';
 
 const app=express();
 const PORT=process.env.PORT||5000;
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Kokoro Quest API is running',
+        status: 'OK'
+    });
+});
 const ELEVEN_BASE='https://api.elevenlabs.io/v1';
 // Default Kitsune Aoi voice created by the project owner.
 // Override with ELEVENLABS_DEFAULT_VOICE_ID when deploying another voice.
