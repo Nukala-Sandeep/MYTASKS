@@ -80,7 +80,7 @@ app.delete('/api/voice',requireAuth,async(req,res)=>{try{const u=await User.find
 
 async function start(){
   if(!process.env.JWT_SECRET){console.error('JWT_SECRET missing in server/.env');process.exit(1)}
-  app.listen(PORT,'127.0.0.1',()=>console.log(`mytasks API: http://localhost:${PORT}`));
+  app.listen(PORT,'0.0.0.0',()=>console.log(`mytasks API: http://localhost:${PORT}`));
   const uri=process.env.MONGODB_URI||'mongodb://127.0.0.1:27017/mytasks';
   mongoose.connection.on('connected',()=>console.log('MongoDB connected'));
   mongoose.connection.on('error',e=>console.error('MongoDB error:',e.message));
