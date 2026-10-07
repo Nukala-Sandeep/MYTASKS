@@ -11,7 +11,7 @@ const app=express();
 const PORT=process.env.PORT||5000;
 app.get('/', (req, res) => {
     res.json({
-        message: 'Kokoro Quest API is running',
+        message: 'MYTASKS API is running',
         status: 'OK'
     });
 });
